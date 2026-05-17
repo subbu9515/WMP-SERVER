@@ -2,6 +2,9 @@ dnf module disable nginx -y
 dnf module enable nginx:1.26 -y
 dnf install -y nginx
 
+cp nginx.conf /etc/nginx/nginx.conf
+
+
 systemctl enable nginx
 systemctl start nginx
 
@@ -23,6 +26,5 @@ npm run build
 rm -rf /usr/share/nginx/html/*
 cp -r /tmp/frontend/dist/* /usr/share/nginx/html/
 
-cp nginx.conf /etc/nginx/nginx.conf
 
 systemctl restart nginx
