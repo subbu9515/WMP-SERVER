@@ -2,3 +2,11 @@ dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_6
 dnf -qy module disable postgresql
 dnf install -y postgresql16-server postgresql16
 postgresql-setup --initdb
+
+sed -i "s/^#listen_addresses =.*/listen_addresses = '*'/" /var/lib/pgsql/data/postgresql.conf
+
+cp pg_hba.conf /var/lib/pgsql/data/pg_hba.conf 
+
+systemctl restart postgresql-16
+
+sudo -u postgres /usr/pgsql-16/bin/psql -f /path/to/schema.sql
