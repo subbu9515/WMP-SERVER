@@ -7,6 +7,6 @@ sed -i "s/^#listen_addresses =.*/listen_addresses = '*'/" /var/lib/pgsql/data/po
 
 cp pg_hba.conf /var/lib/pgsql/data/pg_hba.conf 
 
-systemctl restart postgresql-16
+systemctl restart postgresql
 
-sudo -u postgres /usr/pgsql-16/bin/psql -f /path/to/schema.sql
+sudo -u postgres /usr/bin/psql -f /path/to/schema.sql
